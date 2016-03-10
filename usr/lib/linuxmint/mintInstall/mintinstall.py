@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
 import Classes
@@ -459,7 +459,7 @@ class Application():
         gladefile = "/usr/lib/linuxmint/mintInstall/mintinstall.glade"
         wTree = gtk.glade.XML(gladefile, "main_window")
         wTree.get_widget("main_window").set_title(_("Software Manager"))
-        wTree.get_widget("main_window").set_icon_name("mintinstall")
+        wTree.get_widget("main_window").set_icon_from_file("/usr/lib/linuxmint/mintInstall/icon.svg")
         wTree.get_widget("main_window").connect("delete_event", self.close_application)
         
         self.main_window = wTree.get_widget("main_window")
@@ -761,7 +761,7 @@ class Application():
         gladefile = "/usr/lib/linuxmint/mintInstall/mintinstall.glade"
         wTree = gtk.glade.XML(gladefile, "window_account")
         wTree.get_widget("window_account").set_title(_("Account information"))
-        wTree.get_widget("window_account").set_icon_name("mintinstall")
+        wTree.get_widget("window_account").set_icon_from_file("/usr/lib/linuxmint/mintInstall/icon.svg")
         wTree.get_widget("label1").set_label("<b>%s</b>" % _("Your community account"))
         wTree.get_widget("label1").set_use_markup(True)
         wTree.get_widget("label2").set_label("<i><small>%s</small></i>" % _("Fill in your account info to review applications"))
@@ -813,9 +813,9 @@ class Application():
         except Exception, detail:
             print detail
 
-        dlg.set_authors([_("Clement Lefebvre <root@linuxmint.com>"),_("Fork by" " Claudio A. Silva <claudiosilva@duzeru.org>")])
-        dlg.set_icon_name("mintinstall")
-        dlg.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/share/pixmaps/mintinstall.svg"))
+        dlg.set_authors(["Clement Lefebvre <root@linuxmint.com>"])
+        dlg.set_icon_from_file("/usr/lib/linuxmint/mintInstall/icon.svg")
+        dlg.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/lib/linuxmint/mintInstall/icon.svg"))
         def close(w, res):
             if res == gtk.RESPONSE_CANCEL:
                 w.hide()
@@ -1899,8 +1899,10 @@ class Application():
 
 if __name__ == "__main__":
     os.system("mkdir -p " + home + "/.linuxmint/mintinstall/screenshots/")
+    #splash_process = Popen("/usr/lib/linuxmint/mintInstall/splash.py")
     model = Classes.Model()
     Application()
+    #os.system("kill -9 %d" % splash_process.pid)
     gtk.gdk.threads_enter()
     gtk.main()
     gtk.gdk.threads_leave()

@@ -1,8 +1,8 @@
 Package: mintinstall
-Version: 7.6.4
+Version: 7.6.3
 Architecture: all
 Maintainer: Claudio A. Silva <claudiosilva@duzeru.org>
-Installed-Size: 7351
+Installed-Size: 7633
 Depends: python (>= 2.4), python (<< 3), python-gtk2, python-glade2, mint-common, python-webkit, python-imaging, ttf-freefont, python-sexy, libgtk2-perl, python-beautifulsoup
 Recommends: mintinstall-icons
 Section: admin
